@@ -1,4 +1,6 @@
 import csv
+from src.reminder import politeReminder
+
 
 def list_reminders():
     f = open("reminders.csv", "r")
@@ -14,6 +16,8 @@ def list_reminders():
 
 def add_reminder(text):
 
+    reminder = politeReminder(text)
+
     with open('reminders.csv', 'a+', newline='\n') as file:
         writer = csv.writer(file)
-        writer.writerow([text])
+        writer.writerow([reminder.text])
